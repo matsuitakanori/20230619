@@ -1,24 +1,28 @@
 <template>
   <div>
     <header>
-      <p class="top">研修生新規登録確認</p>
+      <p class="top">研修生 新規登録 確認</p>
     </header>
 
     <main>
       <div>
-        <p>下記の情報で新規登録します</p>
+        <p>下記の情報で新規登録します。よろしいですか？</p>
       </div>
-      <div>
-        <label for="name">名前</label>
+
+     <div class="aaa">
+      <div class="bbb">
+        <label for="name" class="ddd">名前</label>
         <span>{{ store.inputValue1 }}</span>
       </div>
-      <div>
-        <label for="email">メールアドレス</label>
+      <div class="ccc">
+        <label for="email" class="ddd">メールアドレス</label>
         <span>{{ store.inputValue2 }}</span>
       </div>
+      </div>
+
       <div>
-        <button @click="register">確認</button>
-        <button @click="cancel">キャンセル</button>
+        <button @click="register" class="eee">確認</button>
+        <button @click="cancel" class="fff">キャンセル</button>
       </div>
     </main>
   </div>
@@ -79,6 +83,39 @@ header {
   border-bottom: 1px solid black;
   margin: 0 auto;
 }
+.aaa{
+  height: 150px;
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+.bbb{
+  position: absolute;
+  margin-bottom: 10px;
+  top:40px;
+  left: 77px;
+}
+.ccc{
+  position: absolute;
+  top:80px;
+}
+.ddd{
+  margin-right: 20px;
+}
+.eee{
+background-color: blue;
+color: white;
+margin-right: 10px;
+border-radius: 10px;
+}
+
+.fff{
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+
 </style>
 
 <!--

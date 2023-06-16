@@ -1,21 +1,23 @@
 <template>
   <div>
     <header>
-      <p class="top">研修生新規登録</p>
+      <p class="top">研修生 新規登録</p>
     </header>
 
     <main>
-      <div>
-        <label for="name">名前</label>
+      <div class="ddd">
+      <div class="eee">
+        <label for="name" class="ccc">名前</label>
         <input type="text" id="name" v-model="name">
       </div>
-      <div>
-        <label for="email">メールアドレス</label>
+      <div class="fff">
+        <label for="email" class="ccc">メールアドレス</label>
         <input type="email" id="email" v-model="email">
       </div>
+      </div>
       <div>
-        <button @click="register">確認</button>
-        <button @click="cancel">キャンセル</button>
+        <button @click="register" class="aaa">確認</button>
+        <button @click="cancel" class="bbb">キャンセル</button>
       </div>
     </main>
   </div>
@@ -52,6 +54,41 @@ header {
   height: 50px;
   border-bottom: 1px solid black;
   margin: 0 auto;
+}
+
+
+.aaa{
+  color:white;
+  background-color: black;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.bbb{
+  color:white;
+  background-color: black;
+  border-radius: 10px;
+}
+.ccc{
+  
+}
+.ddd{
+  position: relative;
+  height:150px;
+  width:300px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.eee{
+  margin-bottom: 10px;
+  margin-left: 77px;
+  position: absolute;
+  top:30px;
+ 
+}
+.fff{
+position: absolute;
+top:60px;
+
 }
 </style>
 

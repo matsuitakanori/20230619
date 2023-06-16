@@ -5,6 +5,8 @@
     </header>
 
     <main>
+      <div class="aaa">
+        <div class="bbb">
       <div>
         <label for="id">ID</label>
         <span>{{ store.inputValue1 }}</span> <!-- counter.jsからデータを取得 -->
@@ -17,8 +19,10 @@
         <label for="email">メールアドレス</label>
         <span>{{ store.inputValue3 }}</span> <!-- counter.jsからデータを取得 -->
       </div>
+      </div>
       <div>
         <p>こちらのデータを削除します。本当によろしいですか？</p>
+      </div>
       </div>
       <div>
         <button class="delete-button" @click="deleteEmployee">削除</button>
@@ -85,11 +89,24 @@ header {
 .delete-button {
   margin-right: 10px;
   border-radius: 5px;
+  background-color: red;
+  color:white;
 }
 
 .cancel-button {
   margin-left: 10px;
   border-radius: 5px;
+  color:white;
+  background-color: black;
+}
+.aaa{
+  height: 200px;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.bbb{
+  text-align: left;
 }
 </style>
 

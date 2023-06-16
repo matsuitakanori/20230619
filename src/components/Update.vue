@@ -1,25 +1,35 @@
 <template>
+
   <div>
     <header>
       <p class="top">研修生編集</p>
     </header>
     <main>
+      <div class="aaa">
       <div>
-        <p>ID</p>
-        <p>{{ inputValue1 }}</p>
-        <p>名前</p>
+        <span class="ggg">ID</span>
+        <span>{{ inputValue1 }}</span>
+      </div>
+
+      <div class="eee">
+        <label class="ggg">名前</label>
         <input type="text" id="name" v-model="name">
       </div>
-      <div>
-        <p>メールアドレス</p>
+
+      <div class="fff">
+        <label class="ggg">メールアドレス</label>
         <input type="email" id="email" v-model="email">
       </div>
-      <div>
-        <button @click="register">確認</button>
-        <button @click="cancel">キャンセル</button>
+
+      <div class="bbb">
+        <button @click="register" class="ccc">確認</button>
+        <button @click="cancel" class="ddd">キャンセル</button>
+      </div>
+
       </div>
     </main>
   </div>
+
 </template>
 
 <script>
@@ -57,6 +67,38 @@ header {
   border-bottom: 1px solid black;
   margin: 0 auto;
 }
+.ccc{
+margin-right: 10px;
+background-color: black;
+color:white;
+border-radius: 10px;
+}
+.ddd{
+background-color: black;
+color:white;
+border-radius: 10px;
+}
+main{
+margin-top: 30px;
+}
+.aaa{
+  height: 300px;
+  width:300px;
+  margin: 0 auto;
+}
+.bbb{
+  margin-top: 30px;
+}
+.eee{
+text-align: right;
+}
+.fff{
+text-align: right;
+}
+.ggg{
+  margin-right: 5px;
+}
+
 </style>
 
 

@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <header>
@@ -8,7 +9,7 @@
       <button class="create" @click="goToCreate">
         <i class="fas fa-plus"></i>
       </button>
-      <table border="1" style="color: #404040; background: #f4f4f4; text-align: center; margin: 0 auto; margin-top: 20px;">
+      <table style="color: #404040; text-align: center; margin: 0 auto; margin-top: 100px;" >
         <tr>
           <th>ID</th>
           <th>名前</th>
@@ -123,6 +124,10 @@ table {
 .edit-button:hover {
   color: blue;
 }
+.create{
+  top:100px;
+}
+
 </style>
 
 
