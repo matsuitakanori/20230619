@@ -1,0 +1,217 @@
+<template>
+  <div>
+    <header>
+      <p class="top">研修生新規登録確認</p>
+    </header>
+
+    <main>
+      <div>
+        <p>下記の情報で新規登録します</p>
+      </div>
+      <div>
+        <label for="name">名前</label>
+        <span>{{ store.inputValue1 }}</span>
+      </div>
+      <div>
+        <label for="email">メールアドレス</label>
+        <span>{{ store.inputValue2 }}</span>
+      </div>
+      <div>
+        <button @click="register">確認</button>
+        <button @click="cancel">キャンセル</button>
+      </div>
+    </main>
+  </div>
+</template>
+
+<script>
+import { useStore } from '../stores/counter.js';
+import { useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const register = () => {
+      const name = store.inputValue1;
+      const email = store.inputValue2;
+
+      // データベースにレコードを追加
+      fetch("http://localhost:8080/api/employees", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("ネットワークエラー。APIを呼び出せませんでした。");
+        }
+        return res.json();
+      })
+      .then(jsonData => {
+        // データベースへの追加が成功した場合の処理を記述します
+        console.log(jsonData);
+        // ルーターリンクを実行して/usersページに移動
+        router.push('/users');
+      })
+      .catch(err => console.error(err));
+    };
+
+    const cancel = () => {
+      router.push('/users');
+    };
+
+    return {
+      store,
+      register,
+      cancel,
+    };
+  },
+};
+</script>
+
+<style scoped>
+header {
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+}
+</style>
+
+<!--
+<template>
+  <div>
+    <header>
+      <p class="top">研修生新規登録確認</p>
+    </header>
+
+    <main>
+      <div>
+        <p>下記の情報で新規登録します</p>
+      </div>
+      <div>
+        <label for="name">名前</label>
+        <span>{{ store.inputValue1 }}</span>
+      </div>
+      <div>
+        <label for="email">メールアドレス</label>
+        <span>{{ store.inputValue2 }}</span>
+      </div>
+      <div>
+        <button @click="register">確認</button>
+        <button @click="cancel">キャンセル</button>
+      </div>
+    </main>
+  </div>
+</template>
+
+<script>
+import { useStore } from '../stores/counter.js';
+
+export default {
+  setup() {
+    const store = useStore();
+
+    const register = () => {
+      const name = store.inputValue1;
+      const email = store.inputValue2;
+
+      // 保存の処理を行う
+
+      this.$router.push('/users');
+    };
+
+    const cancel = () => {
+      this.$router.push('/users');
+    };
+
+    return {
+      store,
+      register,
+      cancel,
+    };
+  },
+};
+</script>
+
+<style scoped>
+header {
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+}
+</style>
+-->
+
+<!--
+<template>
+  <div>
+    <header>
+      <p class="top">研修生新規登録確認</p>
+    </header>
+
+    <main>
+      <div>
+        <p>下記の情報で新規登録します</p>
+      </div>
+      <div>
+        <label for="name">名前</label>
+        <span>{{ $route.query.name }}</span>
+      </div>
+      <div>
+        <label for="email">メールアドレス</label>
+        <span>{{ $route.query.email }}</span>
+      </div>
+      <div>
+        <button @click="register">確認</button>
+        <button @click="cancel">キャンセル</button>
+      </div>
+    </main>
+  </div>
+</template>
+
+<script>
+export default {
+  methods: {
+    register() {
+      const name = this.$route.query.name;
+      const email = this.$route.query.email;
+
+      fetch("http://localhost:8080/api/employees", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("network error. we couldn't call the API.");
+        }
+        return res.json();
+      })
+      .then(jsonData => {
+        console.log(jsonData);
+        // データベースへの追加が成功した場合の処理を記述します
+        this.$router.push('/users');
+      })
+      .catch(err => console.error(err));
+    },
+    cancel() {
+      this.$router.push('/users');
+    },
+  },
+};
+</script>
+
+<style scoped>
+header {
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+}
+</style>
+-->
