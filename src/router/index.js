@@ -8,7 +8,9 @@ import Delete from '../components/Delete.vue';
 import Update_confirm from '../components/Update_confirm.vue';
 
 
+
 const routes = [
+  
   {
     path: '/update_confirm',
     name: 'update_confirm',
