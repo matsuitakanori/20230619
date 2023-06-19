@@ -9,7 +9,7 @@
       <button class="create" @click="goToCreate">
         <i class="fas fa-plus"></i>
       </button>
-      <table style="color: #404040; text-align: center; margin: 0 auto; margin-top: 100px;" >
+      <table style="color: #404040; text-align: center; margin: 0 auto; margin-top: 100px;; background: #f4f4f4" >
         <tr>
           <th>ID</th>
           <th>名前</th>
