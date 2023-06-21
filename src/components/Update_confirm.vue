@@ -23,6 +23,10 @@
         <label for="email" class="kkk">メールアドレス</label>
         <span class="nnn">{{ inputValue3 }}</span>
       </div>
+      <div class="hhh">
+        <label for="email" class="kkk">プロフィール画像</label>
+        <span class="nnn">{{ inputValue4 }}</span>
+      </div>
       </div>
 
       <div class="ccc">
@@ -51,6 +55,10 @@ export default {
       const store = useStore();
       return store.inputValue3;
     },
+    inputValue4() {
+      const store = useStore();
+      return store.inputValue4;
+    },
   },
   methods: {
     async register() {
@@ -58,6 +66,7 @@ export default {
       const id = store.inputValue1;
       const name = store.inputValue2;
       const email = store.inputValue3;
+      const icon = store.inputValue4;
 
       try {
         const response = await fetch(`http://localhost:8080/api/employees/${id}`, {
@@ -65,7 +74,7 @@ export default {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name, email }),
+          body: JSON.stringify({ name, email,icon }),
         });
 
         // 成功した場合の処理を追加
@@ -169,9 +178,6 @@ top:90px;
   width: 100px;
   text-align: left;
 }
-
-
-
 
 
 </style>

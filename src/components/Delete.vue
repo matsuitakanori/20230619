@@ -19,6 +19,10 @@
         <label for="email">メールアドレス</label>
         <span>{{ store.inputValue3 }}</span> <!-- counter.jsからデータを取得 -->
       </div>
+      <div>
+        <label for="icon">プロフィール画像</label>
+        <span>{{ store.inputValue4 }}</span> <!-- counter.jsからデータを取得 -->
+      </div>
       </div>
       <div>
         <p>こちらのデータを削除します。本当によろしいですか？</p>

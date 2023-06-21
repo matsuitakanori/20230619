@@ -21,6 +21,11 @@
           <input type="text" id="email" v-model="email" @input="checkValidity">
         </div>
 
+        <div class="eee">
+          <label class="ggg">プロフィール画像</label>
+          <input type="text" id="icon" v-model="icon">
+        </div>
+
         <div class="bbb">
           <button @click="register" class="ccc" :disabled="!isEmailValid">確認</button>
           <button @click="cancel" class="ddd">キャンセル</button>
@@ -50,7 +55,7 @@ export default {
   methods: {
     register() {
       const store = useStore();
-      store.setInputValues(this.inputValue1, this.name, this.email, '');
+      store.setInputValues(this.inputValue1, this.name, this.email, this.icon, '');
       this.$router.push('/update_confirm');
     },
     cancel() {

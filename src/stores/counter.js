@@ -1,3 +1,5 @@
+// store.js
+
 import { defineStore } from 'pinia';
 
 export const useStore = defineStore('store', {
@@ -18,6 +20,7 @@ export const useStore = defineStore('store', {
       console.log(this.inputValue3);
       console.log(this.inputValue4);
     },
+   
   },
 });
 
