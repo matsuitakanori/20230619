@@ -9,6 +9,135 @@
         <p>下記の情報で新規登録します。よろしいですか？</p>
       </div>
 
+      <div class="aaa">
+        <div class="bbb">
+          <label for="name" class="ddd">名前</label>
+          <span>{{ store.inputValue1 }}</span>
+        </div>
+        <div class="ccc">
+          <label for="email" class="ddd">メールアドレス</label>
+          <span>{{ store.inputValue2 }}</span>
+        </div>
+        <div class="ggg">
+          <label for="icon" class="ddd">プロフィール画像</label>
+          <img :src="store.inputValue3" alt="プロフィール画像" v-if="store.inputValue3">
+        </div>
+      </div>
+
+      <div>
+        <button @click="register" class="eee">確認</button>
+        <button @click="cancel" class="fff">キャンセル</button>
+      </div>
+    </main>
+
+    <footer>
+    </footer>
+  </div>
+</template>
+
+<script>
+import { useStore } from '../stores/counter.js';
+import { useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const register = () => {
+      const name = store.inputValue1;
+      const email = store.inputValue2;
+      const icon = store.inputValue3;
+
+      // データベースにレコードを追加
+      fetch("http://localhost:8080/api/employees", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&icon=${encodeURIComponent(icon)}`
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("ネットワークエラー。APIを呼び出せませんでした。");
+        }
+        return res.json();
+      })
+      .then(jsonData => {
+        // データベースへの追加が成功した場合の処理を記述します
+        console.log(jsonData);
+        // ルーターリンクを実行して/usersページに移動
+        router.push('/users');
+      })
+      .catch(err => console.error(err));
+    };
+
+    const cancel = () => {
+      router.push('/users');
+    };
+
+    return {
+      store,
+      register,
+      cancel,
+    };
+  },
+};
+</script>
+
+<style scoped>
+header {
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+}
+.aaa{
+  height: 1000px;
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+.bbb{
+  position: absolute;
+  margin-bottom: 10px;
+  top:40px;
+  left: 77px;
+}
+.ccc{
+  position: absolute;
+  top:80px;
+}
+.ddd{
+  margin-right: 20px;
+}
+.eee{
+background-color: blue;
+color: white;
+margin-right: 10px;
+border-radius: 10px;
+}
+
+.fff{
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+
+</style>
+
+<!--
+<template>
+  <div>
+    <header>
+      <p class="top">研修生 新規登録 確認</p>
+    </header>
+
+    <main>
+      <div>
+        <p>下記の情報で新規登録します。よろしいですか？</p>
+      </div>
+
      <div class="aaa">
       <div class="bbb">
         <label for="name" class="ddd">名前</label>
@@ -123,6 +252,7 @@ border-radius: 10px;
 
 
 </style>
+-->
 
 <!--
 <template>

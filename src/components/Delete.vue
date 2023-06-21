@@ -7,26 +7,26 @@
     <main>
       <div class="aaa">
         <div class="bbb">
-      <div>
-        <label for="id">ID</label>
-        <span>{{ store.inputValue1 }}</span> <!-- counter.jsからデータを取得 -->
-      </div>
-      <div>
-        <label for="name">名前</label>
-        <span>{{ store.inputValue2 }}</span> <!-- counter.jsからデータを取得 -->
-      </div>
-      <div>
-        <label for="email">メールアドレス</label>
-        <span>{{ store.inputValue3 }}</span> <!-- counter.jsからデータを取得 -->
-      </div>
-      <div>
-        <label for="icon">プロフィール画像</label>
-        <span>{{ store.inputValue4 }}</span> <!-- counter.jsからデータを取得 -->
-      </div>
-      </div>
-      <div>
-        <p>こちらのデータを削除します。本当によろしいですか？</p>
-      </div>
+          <div>
+            <label for="id">ID</label>
+            <span>{{ store.inputValue1 }}</span> <!-- counter.jsからデータを取得 -->
+          </div>
+          <div>
+            <label for="name">名前</label>
+            <span>{{ store.inputValue2 }}</span> <!-- counter.jsからデータを取得 -->
+          </div>
+          <div>
+            <label for="email">メールアドレス</label>
+            <span>{{ store.inputValue3 }}</span> <!-- counter.jsからデータを取得 -->
+          </div>
+          <div>
+            <label for="icon">プロフィール画像</label>
+            <img :src="store.inputValue4" alt="プロフィール画像" width="100" height="100">
+          </div>
+        </div>
+        <div>
+          <p>こちらのデータを削除します。本当によろしいですか？</p>
+        </div>
       </div>
       <div>
         <button class="delete-button" @click="deleteEmployee">削除</button>
