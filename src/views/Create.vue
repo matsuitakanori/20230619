@@ -1,35 +1,106 @@
 <template>
   <div>
-    <header>
-      <p class="top">研修生 新規登録</p>
+
+    
+    <header class="header1">
+      <p class="header-font">研修生 新規登録</p>
     </header>
 
     <main>
-      <div class="ddd">
-        <div class="eee">
-          <label for="name" class="ccc">名前</label>
-          <input type="text" v-model="name">
+
+      <div class="top-wrapper">
+        <div class="top-item">
+          <p>名前</p>
+          <p>メールアドレス</p>
+          <p>プロフィール画像</p>
         </div>
-        <div class="fff">
-          <label for="email" class="ccc">メールアドレス</label>
-          <input type="text" v-model="email" @input="checkValidity">
-          <p v-if="!isEmailValid" class="error-message">※メールアドレスに使用不可な文字が含まれています</p>
-        </div>
-        <div class="ggg">
-          <label for="icon" class="ccc">プロフィール画像</label>
-          <input type="file" accept="image/*" @change="handleImageUpload">
-        </div>
+        <div class="object">
+          <input type="text" v-model="name" class="input1">
+          <input type="text" v-model="email" @input="checkValidity" class="input2">
+          <input type="file" accept="image/*" @change="handleImageUpload" class="input3">
+        </div> 
+        <p v-if="!isEmailValid" class="input4">※メールアドレスに使用不可な文字が含まれています</p>
       </div>
+
       <div>
-        <img :src="previewImage" alt="プロフィール画像" v-if="previewImage">
+        <button @click="register"  :disabled="!isEmailValid" class="varification">確認</button>
+        <button @click="cancel" class="cancel">キャンセル</button>
       </div>
-      <div>
-        <button @click="register" class="aaa" :disabled="!isEmailValid">確認</button>
-        <button @click="cancel" class="bbb">キャンセル</button>
-      </div>
+
+
     </main>
   </div>
 </template>
+
+<style scoped>
+.header1{
+  height:80px;
+  line-height: 80px;
+  border-bottom:3px solid  ;
+}
+.header-font{
+  font-size:30px;
+  font-weight: bold;
+}
+.top-wrapper{
+  display: flex;
+  width:600px;
+  height: 200px;
+  margin: 0 auto;
+  padding-top:100px;
+  font-weight: bold;
+}
+.top-item{
+  text-align:right;
+}
+.object{
+  position: relative;
+}
+.input1{
+  display: block;
+  position: absolute;
+  top:20px;
+  margin-left: 10px;
+}
+.input2{
+  display: block;
+  position: absolute;
+  top:58px;
+  margin-left: 10px;
+}
+.input3{
+  display: block;
+  position: absolute;
+  top:98px;
+  margin-left: 10px;
+}
+.input4 {
+  font-size:8px;
+  margin-top: 43px;
+  color:red;
+  margin-left: 10px;
+}
+.varification{
+width: 150px;
+height: 50px;
+border-radius: 40px;
+font-size:20px;
+color:white;
+background-color: black;
+margin-right: 30px;
+}
+.cancel{
+width: 150px;
+height: 50px;
+border-radius: 40px;
+font-size:20px;
+color:white;
+background-color: black;
+}
+
+
+</style>
+
 
 <script>
 import { useStore } from '../stores/counter.js';
@@ -71,58 +142,6 @@ export default {
 };
 </script>
 
-<style scoped>
-header {
-  height: 50px;
-  border-bottom: 1px solid black;
-  margin: 0 auto;
-}
-
-.aaa {
-  color: white;
-  background-color: black;
-  border-radius: 10px;
-  margin-right: 10px;
-}
-
-.bbb {
-  color: white;
-  background-color: black;
-  border-radius: 10px;
-}
-
-.ccc {}
-
-.ddd {
-  position: relative;
-  height: 150px;
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.eee {
-  margin-bottom: 10px;
-  margin-left: 77px;
-  position: absolute;
-  top: 30px;
-}
-
-.fff {
-  position: absolute;
-  top: 60px;
-}
-
-.ggg {
-  position: absolute;
-  top: 90px;
-}
-
-.error-message {
-  color: red;
-  font-size: 10px;
-}
-</style>
 
 
 <!--

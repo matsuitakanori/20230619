@@ -5,10 +5,11 @@
     </header>
 
     <main>
+
       <button class="create" @click="goToCreate">
         <i class="fas fa-plus"></i>
       </button>
-      <table style="color: #404040; text-align: center; margin: 0 auto; margin-top: 100px; background: #f4f4f4">
+      <table >
         <tr>
           <th>ID</th>
           <th>名前</th>
@@ -41,13 +42,15 @@
           <i class="fas fa-chevron-left"></i>
         </button>
         <span v-for="pageNumber in totalPages" :key="pageNumber" :class="{ active: pageNumber === currentPage }" @click="goToPage(pageNumber)">
-          <template v-if="pageNumber === currentPage || pageNumber === 1 || pageNumber === totalPages || Math.abs(pageNumber - currentPage) <= 1">
-            {{ pageNumber }}
-          </template>
-          <template v-else-if="Math.abs(pageNumber - currentPage) === 2">
-            ...
-          </template>
-        </span>
+      <template v-if="pageNumber === currentPage || pageNumber === 1 || pageNumber === totalPages || Math.abs(pageNumber - currentPage) <= 1">
+        <div class="page-number" :class="{ active: pageNumber === currentPage }">
+          {{ pageNumber }}
+        </div>
+      </template>
+      <template v-else-if="Math.abs(pageNumber - currentPage) === 2">
+        <div class="page-number">...</div>
+      </template>
+    </span>
         <button @click="nextPage" :disabled="currentPage === totalPages">
           <i class="fas fa-chevron-right"></i>
         </button>
@@ -57,6 +60,99 @@
     <footer></footer>
   </div>
 </template>
+
+<style scoped>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+header {
+  height: 50px;
+  border-bottom: 3px solid black;
+  margin: 0 auto;
+}
+
+.top {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.create {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.create:hover {
+  opacity: 0.8;
+}
+
+table {
+  margin: 0 auto;
+  margin-top: 50px;
+  border-collapse: collapse;
+}
+td:nth-child(-n+3) {
+  border: 3px solid black;
+}
+
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  color: blue;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.page-number {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 2px;
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-number.active {
+  background-color: rgb(255, 187, 0);
+  color: white;
+}
+
+.pagination button {
+  margin: 0 5px;
+}
+
+.pagination button i {
+  font-size: 18px;
+  color: blue;
+}
+
+.pagination span {
+  cursor: pointer;
+}
+
+.pagination span.active {
+  color: red;
+  font-weight: bold;
+}
+
+
+</style>
 
 <script>
 import { useStore } from '../stores/counter';
@@ -123,17 +219,81 @@ export default {
 };
 </script>
 
+
+
+<!--
+<template>
+  <div>
+    <header>
+      <p class="top">研修生一覧</p>
+    </header>
+
+    <main>
+      <button class="create" @click="goToCreate">
+        <i class="fas fa-plus"></i>
+      </button>
+      <table >
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>画像</th>
+          <th>削除</th>
+          <th>編集</th>
+        </tr>
+        <tr v-for="employee in displayedEmployees" :key="employee.id">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>
+            <img :src="employee.icon" alt="アイコン" width="50" height="50">
+          </td>
+          <td>
+            <a href="#" @click="deleteEmployee(employee)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+          <td>
+            <button class="edit-button" @click="editEmployee(employee.id, employee.name, employee.email,employee.icon)">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <div class="pagination">
+        <button @click="previousPage" :disabled="currentPage === 1">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span v-for="pageNumber in totalPages" :key="pageNumber" :class="{ active: pageNumber === currentPage }" @click="goToPage(pageNumber)">
+          <template v-if="pageNumber === currentPage || pageNumber === 1 || pageNumber === totalPages || Math.abs(pageNumber - currentPage) <= 1">
+            {{ pageNumber }}
+          </template>
+          <template v-else-if="Math.abs(pageNumber - currentPage) === 2">
+            ...
+          </template>
+        </span>
+        <button @click="nextPage" :disabled="currentPage === totalPages">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </main>
+
+    <footer></footer>
+  </div>
+</template>
+
 <style scoped>
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
 
 header {
   height: 50px;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
   margin: 0 auto;
 }
 
 .top {
   font-size: 25px;
+  font-weight: bold;
 }
 
 .create {
@@ -192,6 +352,8 @@ table {
   font-weight: bold;
 }
 </style>
+-->
+
 
 
 <!--

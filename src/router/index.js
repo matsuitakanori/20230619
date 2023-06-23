@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Update from '../components/Update.vue';
-import Create_confirm from '../components/Create_confirm.vue';
-import Users from '../components/Users.vue';
+import Update from '../views/Update.vue';
+import Create_confirm from '../views/Create_confirm.vue';
+import Users from '../views/Users.vue';
 import HomeView from '../views/HomeView.vue';
-import Create from '../components/Create.vue';
-import Delete from '../components/Delete.vue';
-import Update_confirm from '../components/Update_confirm.vue';
+import Create from '../views/Create.vue';
+import Delete from '../views/Delete.vue';
+import Update_confirm from '../views/Update_confirm.vue';
 
 
 

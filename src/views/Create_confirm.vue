@@ -1,39 +1,107 @@
 <template>
   <div>
-    <header>
-      <p class="top">研修生 新規登録 確認</p>
+    <header class="header1">
+      <p class="header-font">研修生 新規登録 確認</p>
     </header>
 
     <main>
-      <div>
+      <div class="top-wrapper">
         <p>下記の情報で新規登録します。よろしいですか？</p>
       </div>
 
-      <div class="aaa">
-        <div class="bbb">
-          <label for="name" class="ddd">名前</label>
-          <span>{{ store.inputValue1 }}</span>
+      <div class="middle-wrapper">
+        <div class="middle1-wrapper">
+          <p class="name">名前</p>
+          <p class="email">メールアドレス</p>
+          <p class="profile">プロフィール画像</p>
         </div>
-        <div class="ccc">
-          <label for="email" class="ddd">メールアドレス</label>
-          <span>{{ store.inputValue2 }}</span>
+        <div class="middle2-wrapper">
+          <p class="name">{{ store.inputValue1 }}</p>
+          <p class="email">{{ store.inputValue2 }}</p>
+          <img :src="store.inputValue3" alt="プロフィール画像" v-if="store.inputValue3" class="profile">
         </div>
-        <div class="ggg">
-          <label for="icon" class="ddd">プロフィール画像</label>
-          <img :src="store.inputValue3" alt="プロフィール画像" v-if="store.inputValue3">
-        </div>
+      </div>  
+
+      <div class="button-wrapper">
+        <button @click="register" class="varification">確認</button>
+        <button @click="cancel" class="cancel">キャンセル</button>
       </div>
 
-      <div>
-        <button @click="register" class="eee">確認</button>
-        <button @click="cancel" class="fff">キャンセル</button>
-      </div>
     </main>
 
     <footer>
     </footer>
   </div>
 </template>
+
+<style scoped>
+.header1{
+  height:80px;
+  line-height: 80px;
+  border-bottom:3px solid  ;
+}
+.header-font{
+  font-size:30px;
+  font-weight: bold;
+}
+.top-wrapper{
+  width:600px;
+  height: 70px;
+  margin: 0 auto;
+  padding-top:30px;
+  font-weight: bold;
+}
+.middle-wrapper{
+  display: flex;
+  width:600px;
+  height: 300px;
+  margin: 0 auto;
+  font-weight: bold;
+}
+.middle1-wrapper{
+  text-align: right;
+}
+.middle2-wrapper{
+  text-align: left;
+  margin-left: 20px;
+}
+.name{
+height: 50px;
+}
+.email{
+height: 50px;
+}
+.profile{
+height: 50px;
+line-height: 50px;
+}
+
+
+.varification{
+width: 150px;
+height: 50px;
+border-radius: 40px;
+font-size:20px;
+color:white;
+background-color: blue;
+margin-right: 30px;
+}
+.cancel{
+width: 150px;
+height: 50px;
+border-radius: 40px;
+font-size:20px;
+color:white;
+background-color: black;
+}
+img{
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+}
+
+
+</style>
 
 <script>
 import { useStore } from '../stores/counter.js';
@@ -85,46 +153,7 @@ export default {
 };
 </script>
 
-<style scoped>
-header {
-  height: 50px;
-  border-bottom: 1px solid black;
-  margin: 0 auto;
-}
-.aaa{
-  height: 1000px;
-  width: 400px;
-  margin: 0 auto;
-  position: relative;
-}
-.bbb{
-  position: absolute;
-  margin-bottom: 10px;
-  top:40px;
-  left: 77px;
-}
-.ccc{
-  position: absolute;
-  top:80px;
-}
-.ddd{
-  margin-right: 20px;
-}
-.eee{
-background-color: blue;
-color: white;
-margin-right: 10px;
-border-radius: 10px;
-}
 
-.fff{
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-}
-
-
-</style>
 
 <!--
 <template>

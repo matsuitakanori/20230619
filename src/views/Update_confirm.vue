@@ -1,42 +1,110 @@
 <template>
   <div>
-    <header>
-      <p class="top">研修生編集確認</p>
+
+    <header class="header1">
+      <p class="header-font">研修生 編集 確認</p>
     </header>
 
     <main>
 
-      <div>
+      <div class="top-wrapper">
         <p>下記の情報に編集します。よろしいですか？</p>
       </div>
 
-      <div class="eee">
-      <div class="fff">
-        <label for="id" class="iii">ID</label>
-        <span class="lll">{{ inputValue1 }}</span>
-      </div>
-      <div class="ggg">
-        <label for="name" class="jjj">名前</label>
-        <span class="mmm">{{ inputValue2 }}</span>
-      </div>
-      <div class="hhh">
-        <label for="email" class="kkk">メールアドレス</label>
-        <span class="nnn">{{ inputValue3 }}</span>
-      </div>
-      <div class="hhh">
-        <label for="email" class="kkk">プロフィール画像</label>
-        <span class="nnn">{{ inputValue4 }}</span>
-      </div>
-      </div>
+      <div class="middle-wrapper">
 
-      <div class="ccc">
-        <button @click="register" class="aaa">確認</button>
-        <button @click="cancel" class="bbb">キャンセル</button>
+        <div class="middle1-wrapper">
+          <p>ID</p>
+          <p>名前</p>
+          <p>メールアドレス</p>
+          <p class="profile">プロフィール画像</p>
+        </div>
+
+        <div class="middle2-wrapper">
+          <p>{{ inputValue1 }}</p>
+          <p>{{ inputValue2 }}</p>
+          <p>{{ inputValue3 }}</p>
+          <img :src="inputValue4" alt="プロフィール画像">
+        </div>
+
+      </div>
+      
+
+      <div class="button-wrapper">
+        <button @click="register" class="valification">確認</button>
+        <button @click="cancel" class="cancel">キャンセル</button>
       </div>
 
     </main>
+
+    <footer>
+
+    </footer>
+
   </div>
 </template>
+
+<style scoped>
+.header1{
+  height:80px;
+  line-height: 80px;
+  border-bottom:3px solid  ;
+}
+.header-font{
+  font-size:30px;
+  font-weight: bold;
+}
+.top-wrapper{
+  height: 50px;
+  font-size:18px;
+  font-weight:bold;
+}
+.middle-wrapper{
+  display: flex;
+  width:300px;
+  margin: 0 auto;
+  font-weight: bold;
+}
+.middle1-wrapper{
+  text-align:right;
+}
+.middle2-wrapper{
+  text-align:left;
+  margin-left: 15px;
+}
+.profile{
+  position: relative;
+  top: 45px;
+}
+.button-wrapper{
+  margin-top: 50px;
+}
+.valification{
+  width:150px;
+  height: 40px;
+  color: white;
+  background-color: blue;
+  border-radius: 40px;
+  font-size: 18px;
+  margin-right: 15px;
+}
+.cancel{
+  width:150px;
+  height: 40px;
+  color: white;
+  background-color: black;
+  border-radius: 40px;
+  font-size: 18px;
+}
+
+img{
+  max-width: 150px;
+  max-width: 150px;
+}
+
+
+
+</style>
 
 <script>
 import { useStore } from '../stores/counter';
@@ -94,92 +162,7 @@ export default {
 };
 </script>
 
-<style scoped>
-header {
-  height: 50px;
-  border-bottom: 1px solid black;
-  margin: 0 auto;
-}
-.aaa{
-  margin-right: 10px;
-  color: white;
-  background-color: blue;
-  border-radius: 10px;
-}
-.bbb{
-  margin-right: 10px;
-  color: white;
-  background-color: black;
-  border-radius: 10px;
-}
-.ccc{
-  margin-top: 150px;
-}
-main{
-  position: relative;
-  height: 300px;
-  width:400px;
-  margin: 0 auto;
-}
-.eee{
-  position: relative;
-}
-.fff{
-  position: relative;
-position: absolute;
-top:30px;
-}
-.ggg{
-  position: relative;
-position: absolute;
-top:60px;
-}
-.hhh{
-  position: relative;
-position: absolute;
-top:90px;
-}
 
-
-
-.iii{
-  position: absolute;
-  left:30px;
-  width: 200px;
-  text-align: right;
-}
-.jjj{
-  position: absolute;
-  left:30px;
- width: 200px;
- text-align: right;
-}
-.kkk{
-  position: absolute;
-  left:30px;
-  width: 200px;
-  text-align: right;
-}
-.lll{
-  position: absolute;
-  left:250px;
-  width: 100px;
-  text-align: left;
-}
-.mmm{
-  position: absolute;
-  left:250px;
-  width: 100px;
-  text-align: left;
-}
-.nnn{
-  position: absolute;
-  left:250px;
-  width: 100px;
-  text-align: left;
-}
-
-</style>
 
 
 
